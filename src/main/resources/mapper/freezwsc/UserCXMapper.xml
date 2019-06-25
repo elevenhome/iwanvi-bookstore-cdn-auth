@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iwanvi.bookstore.cdn.auth.dao.freezwsc.UserCXMapper" >
+  <resultMap id="BaseResultMap" type="com.iwanvi.bookstore.cdn.auth.po.freezwsc.UserCX" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="SMALLINT" />
+    <result column="birthDay" property="birthday" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="imsi" property="imsi" jdbcType="VARCHAR" />
+    <result column="imei" property="imei" jdbcType="VARCHAR" />
+    <result column="packageName" property="packagename" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="loginNum" property="loginnum" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="clientid" property="clientid" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="cnid" property="cnid" jdbcType="VARCHAR" />
+    <result column="jgcid" property="jgcid" jdbcType="VARCHAR" />
+    <result column="mfxs_clientid" property="mfxsClientid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, channel, name, password, nick_name, logo, integral, sex, birthDay, weixin, qq, 
+    tel, mac, imsi, imei, packageName, last_login_time, loginNum, status, clientid, version, 
+    updateTime, createTime, city, cnid, jgcid, mfxs_clientid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.iwanvi.bookstore.cdn.auth.po.freezwsc.UserCX" >
+    insert into user (id, channel, name, 
+      password, nick_name, logo, 
+      integral, sex, birthDay, 
+      weixin, qq, tel, mac, 
+      imsi, imei, packageName, 
+      last_login_time, loginNum, status, 
+      clientid, version, updateTime, 
+      createTime, city, cnid, 
+      jgcid, mfxs_clientid)
+    values (#{id,jdbcType=INTEGER}, #{channel,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{sex,jdbcType=SMALLINT}, #{birthday,jdbcType=VARCHAR}, 
+      #{weixin,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, 
+      #{imsi,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, #{packagename,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{loginnum,jdbcType=INTEGER}, #{status,jdbcType=SMALLINT}, 
+      #{clientid,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{city,jdbcType=VARCHAR}, #{cnid,jdbcType=VARCHAR}, 
+      #{jgcid,jdbcType=VARCHAR}, #{mfxsClientid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iwanvi.bookstore.cdn.auth.po.freezwsc.UserCX" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthDay,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="imsi != null" >
+        imsi,
+      </if>
+      <if test="imei != null" >
+        imei,
+      </if>
+      <if test="packagename != null" >
+        packageName,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="loginnum != null" >
+        loginNum,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="clientid != null" >
+        clientid,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="cnid != null" >
+        cnid,
+      </if>
+      <if test="jgcid != null" >
+        jgcid,
+      </if>
+      <if test="mfxsClientid != null" >
+        mfxs_clientid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="packagename != null" >
+        #{packagename,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginnum != null" >
+        #{loginnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cnid != null" >
+        #{cnid,jdbcType=VARCHAR},
+      </if>
+      <if test="jgcid != null" >
+        #{jgcid,jdbcType=VARCHAR},
+      </if>
+      <if test="mfxsClientid != null" >
+        #{mfxsClientid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iwanvi.bookstore.cdn.auth.po.freezwsc.UserCX" >
+    update user
+    <set >
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null" >
+        birthDay = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        imsi = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="packagename != null" >
+        packageName = #{packagename,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginnum != null" >
+        loginNum = #{loginnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="clientid != null" >
+        clientid = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cnid != null" >
+        cnid = #{cnid,jdbcType=VARCHAR},
+      </if>
+      <if test="jgcid != null" >
+        jgcid = #{jgcid,jdbcType=VARCHAR},
+      </if>
+      <if test="mfxsClientid != null" >
+        mfxs_clientid = #{mfxsClientid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iwanvi.bookstore.cdn.auth.po.freezwsc.UserCX" >
+    update user
+    set channel = #{channel,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=SMALLINT},
+      birthDay = #{birthday,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      imsi = #{imsi,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      packageName = #{packagename,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      loginNum = #{loginnum,jdbcType=INTEGER},
+      status = #{status,jdbcType=SMALLINT},
+      clientid = #{clientid,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      city = #{city,jdbcType=VARCHAR},
+      cnid = #{cnid,jdbcType=VARCHAR},
+      jgcid = #{jgcid,jdbcType=VARCHAR},
+      mfxs_clientid = #{mfxsClientid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

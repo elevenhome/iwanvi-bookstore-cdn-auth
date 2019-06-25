@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function editObject(itemId){
+            var mask = $("#editbox_mask");
+            var editBar = $("#editbox");
+            function init(){
+                mask.on("click",function(){
+                    editBar.hide();
+                    mask.hide();
+                });
+                loadData(showData);
+            }
+            function loadData(cb) {
+                $.ajax({
+                    url: "/admin/getWeiXinPayPartner?partnerId=" + itemId,
+                    success: function (res) {
+                        cb && typeof cb == "function" && cb(res.data);
+                    }
+                });
+            };
+            function setData() {
+                var postData = $("#form1").serialize();
+                $.ajax({
+                    url: "/admin/setWeiXinPayPartner",
+                    data: postData,
+                    method: "post",
+                    success: function (res) {
+                        if (res.errCode == 0) {
+                            alert("修改成功");
+                            window.location.reload(true);
+                        }
+                        showData(res.data);
+                    }
+                });
+            };
+            function showData(obj) {
+                var arr = new Array();
+                arr.push("<form method='POST' id='form1'>");
+                for (var key in obj) {
+                    arr.push("<div class='field box'><div class='title'>" + key + "</div><div class='content'><input type='text' name='" + key + "' value='" + obj[key] + "' size='45'/></div></div>")
+                }
+                arr.push("<div class='field box'><input type='button' name='submit' value='确定'/></div>");
+                arr.push("</form>");
+                editBar.html(arr.join(""));
+                $("[name=submit]").on("click",function(){
+                    setData();
+                });
+                mask.show();
+                editBar.show();
+            };
+            init();
+        };
+        function showList() {
+            function listToHtml(obj) {
+                var arr = new Array();
+                var item = null;
+                if (Array.isArray(obj)) {
+                    item = obj[0];
+                    arr.push("<table class='table0'>")
+                    arr.push("<tr>");
+                    for (var key in item) {
+                        arr.push("<th>" + key + "</th>")
+                    }
+                    arr.push("</tr>");
+                    for (var i = 0; i < obj.length; i++) {
+                        item = obj[i];
+                        arr.push("<tr onclick='editObject(" + item["partnerId"] + ")'>");
+                        for (var key in item) {
+                            arr.push("<td><span class='value'>" + item[key] + "</span></td>");
+                        }
+                        arr.push("</tr>");
+                    }
+                    arr.push("</table>");
+                }
+                return arr.join("");
+            };
+            function loadData() {
+                var url = "/admin/getWeiXinPayPartnerList?pageSize=10&pageIndex=1";
+                $.ajax({
+                    url: url,
+                    success: function (res) {
+                        var html = listToHtml(res.data)
+                        $("#listbox").html(html);
+                    }
+                })
+            };
+            loadData();
+        };
+        $(function(){
+           showList();
+        });
+    </script>
+    <link href="/css/admin.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="listbox">
+sadfasdf awe fawefawef
+</div>
+<div id="editbox_mask" class="mask"></div>
+<div id="editbox" class="editbox"></div>
+</body>
+</html>
